@@ -1,0 +1,32 @@
+A news plugin for django-cms
+============================
+
+# Requirements #
+
+- django-cms-2.1.x
+- django: 1.2.x
+
+# Setup #
+
+1. make sure requirements are installed and properly working
+2. add `cmsplugin_news` to `PYTHONPATH`
+3. add `cmsplugin_news` to `INSTALLED_APPS`
+4. run `python manage.py syncdb`
+5. Add the `cmsplugin_news.urls` to the `CMS_APPLICATIONS_URLS` setting 
+6. Add the `cmsplugin_news.menu.get_nodes` to the `CMS_NAVIGATION_EXTENDERS` setting
+7. Create a page in CMS and in the `advanced settings` section of the admin for that page, for `Navigation extenders` select `news navigation` and for `application` select 'news' (Restart of the server required due to caching!)
+8. Create the proper templates for your site, the ones included with the app are very basic.
+
+## Examples ##
+``
+CMS_APPLICATIONS_URLS = (
+    (`cmsplugin_news.urls`, `News`),
+)
+
+CMS_NAVIGATION_EXTENDERS = (
+    (`cmsplugin_news.menu.get_nodes`, `News navigation`),
+)
+``
+# Suggestion #
+
+To avoid confusion add a `application` template to the CMS which is like other templates but without any placeholders.  That way users won't get tempted to fill the placeholders and then complain they don't show up ;-)
