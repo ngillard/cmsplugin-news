@@ -1,0 +1,17 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% blocktrans %}News for {{ year }}{% endblocktrans %}{% endblock %}
+
+{% block content %}
+  <h2>{% blocktrans %}News for {{ year }}{% endblocktrans %}</h2>
+
+  <ul>
+    {% for date in date_list %}
+      <li><a href="{% url news_archive_month year=year month=date|date:"m" %}">{{ date|date:"F" }}</a></li>
+    {% empty %}
+      <li>{% trans "No news for this year" %}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

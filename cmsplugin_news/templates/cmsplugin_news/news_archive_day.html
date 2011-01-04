@@ -1,0 +1,17 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% blocktrans %}News for {{ day }}{% endblocktrans %}</h1>{% endblock %}
+
+{% block content %}
+  <h2>{% blocktrans %}News for {{ day }}{% endblocktrans %}</h2>
+
+  <ul>
+    {% for object in object_list %}
+	  <li><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></li>
+    {% empty %}
+      <li>{% trans "No news for this day" %}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

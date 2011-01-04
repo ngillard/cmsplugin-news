@@ -1,0 +1,10 @@
+{% extends "site_base.html" %}
+
+{% block head_title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+  <h2>{{ object.title }}</h2>
+  <span>{{ object.pub_date }}</span>
+
+  {% if object.content %}{{ object.content|safe }}{% else %}&nbsp;{% endif %}
+{% endblock %}

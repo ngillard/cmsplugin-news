@@ -1,0 +1,15 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Latest News" %}{% endblock %}
+
+{% block content %}
+  <h2>{% trans "Latest news" %}</h2>
+
+  {% for object in latest %}
+    <div>
+      <strong>{{ object.title }}</strong><br/><a href="{{ object.get_absolute_url }}">{% trans "Read more" %}</a>
+    </div>
+  {% endfor %}
+{% endblock %}
